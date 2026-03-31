@@ -3,7 +3,7 @@ import { ArrowRight, Droplets, BarChart3, Zap, Leaf } from "lucide-react";
 import { useEffect, useState } from "react";
 
 /**
- * AgriTech-DZ: AI-Driven Precision Agriculture
+ * AgriLoop: AI-Driven Precision Agriculture
  * Design: Organic Tech Aesthetic
  * Color Scheme: Forest Green (#2D5016), Terracotta (#C85A3A), Lime Green (#9ACD32)
  * Typography: Playfair Display (headings) + Poppins (body)
@@ -33,7 +33,7 @@ export default function Home() {
             <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
               <Leaf className="w-6 h-6 text-primary-foreground" />
             </div>
-            <span className="text-xl font-bold text-primary">AgriTech-DZ</span>
+            <span className="text-xl font-bold text-primary">AgriLoop</span>
           </div>
           <div className="hidden md:flex items-center gap-8">
             <a href="#features" className="text-foreground hover:text-primary transition">
@@ -63,11 +63,11 @@ export default function Home() {
 
         <div className="container relative z-10">
           <div className="max-w-2xl">
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-5xl md:text-6xl font-bold text-primary mb-6 leading-tight drop-shadow-lg">
               Engineer the Future of Agriculture
             </h1>
-            <p className="text-xl text-white/90 mb-8 font-light">
-              AgriTech-DZ combines AI, IoT, and precision farming to help Algerian farmers maximize yields, conserve water, and embrace sustainable agriculture.
+            <p className="text-xl text-foreground mb-8 font-light drop-shadow-md">
+              AgriLoop combines AI, IoT, and precision farming to help Algerian farmers maximize yields, conserve water, and embrace sustainable agriculture.
             </p>
             <div className="flex gap-4">
               <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
@@ -92,7 +92,7 @@ export default function Home() {
       <section id="features" className="py-20 bg-primary text-primary-foreground">
         <div className="container">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Why AgriTech-DZ?</h2>
+            <h2 className="text-4xl font-bold mb-4">Why AgriLoop?</h2>
             <p className="text-lg opacity-90 max-w-2xl mx-auto">
               Bridging traditional farming wisdom with cutting-edge technology to solve Algeria's agricultural challenges.
             </p>
@@ -187,7 +187,7 @@ export default function Home() {
               { number: "100%", label: "Organic Ready" },
             ].map((stat, i) => (
               <div key={i} className="text-center">
-                <div className="text-4xl font-bold mb-2">{stat.number}</div>
+              <div className="text-5xl font-bold mb-2 text-secondary-foreground">{stat.number}</div>
                 <p className="opacity-90">{stat.label}</p>
               </div>
             ))}
@@ -243,8 +243,8 @@ export default function Home() {
 
           <div className="relative">
             <img
-              src="https://d2xsxph8kpxj0f.cloudfront.net/310419663030816121/cskiKSwKZ7a4oDETY7KpWS/agritech_team_impact-DCwzn3duKLfDc8sKFEnXXk.webp"
-              alt="Team"
+              src="https://d2xsxph8kpxj0f.cloudfront.net/310419663030816121/cskiKSwKZ7a4oDETY7KpWS/agriloop_team_professional-B4WQSn6hKY8CzGtCpTzXke.webp"
+              alt="AgriLoop Team"
               className="rounded-xl shadow-lg w-full"
             />
           </div>
@@ -276,7 +276,7 @@ export default function Home() {
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <Leaf className="w-6 h-6" />
-                <span className="font-bold">AgriTech-DZ</span>
+                <span className="font-bold">AgriLoop</span>
               </div>
               <p className="opacity-75">Empowering Algerian farmers with AI-driven precision agriculture.</p>
             </div>
@@ -305,7 +305,7 @@ export default function Home() {
             </div>
           </div>
           <div className="border-t border-primary-foreground/20 pt-8 text-center opacity-75">
-            <p>&copy; 2026 AgriTech-DZ. All rights reserved. Transforming agriculture in Algeria.</p>
+            <p>&copy; 2026 AgriLoop. All rights reserved. Transforming agriculture in Algeria.</p>
           </div>
         </div>
       </footer>
