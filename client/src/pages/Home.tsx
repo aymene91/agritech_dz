@@ -183,12 +183,14 @@ export default function Home() {
                 ))}
               </ul>
             </div>
-            <div className="relative">
-              <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310419663030816121/cskiKSwKZ7a4oDETY7KpWS/agriloop_iot_abstract-5FkCFhkeQkHtnLoBccgJcd.webp"
-                alt="IoT Network"
-                className="rounded-xl shadow-lg"
-              />
+            <div className="relative flex items-center justify-center">
+              <div className="bg-gradient-to-br from-primary/5 to-accent/5 rounded-xl p-8 flex items-center justify-center">
+                <img
+                  src="https://d2xsxph8kpxj0f.cloudfront.net/310419663030816121/cskiKSwKZ7a4oDETY7KpWS/agriloop_iot_sensor_device-9z6kSWcocaadoBia3y9MMv.webp"
+                  alt="AgriLoop IoT Sensor Device"
+                  className="w-64 h-64 object-contain drop-shadow-lg"
+                />
+              </div>
             </div>
           </div>
         </div>
