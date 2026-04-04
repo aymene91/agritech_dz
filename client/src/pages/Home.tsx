@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Droplets, BarChart3, Zap, Leaf } from "lucide-react";
+import { ArrowRight, Droplets, BarChart3, Zap, Leaf, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 /**
@@ -11,6 +11,9 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [showContactForm, setShowContactForm] = useState(false);
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
+  const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,6 +22,22 @@ export default function Home() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log("Form submitted:", formData);
+    setSubmitted(true);
+    setTimeout(() => {
+      setShowContactForm(false);
+      setFormData({ name: "", email: "", phone: "", message: "" });
+      setSubmitted(false);
+    }, 2000);
+  };
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -45,7 +64,9 @@ export default function Home() {
             <a href="#impact" className="text-foreground hover:text-primary transition">
               Impact
             </a>
-            <Button className="bg-primary hover:bg-primary/90">Get Started</Button>
+            <Button className="bg-primary hover:bg-primary/90" onClick={() => setShowContactForm(true)}>
+              Get Started
+            </Button>
           </div>
         </div>
       </nav>
@@ -70,7 +91,11 @@ export default function Home() {
               AgriLoop combines AI, IoT, and precision farming to help Algerian farmers maximize yields, conserve water, and embrace sustainable agriculture.
             </p>
             <div className="flex gap-4">
-              <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
+              <Button
+                size="lg"
+                className="bg-accent text-accent-foreground hover:bg-accent/90"
+                onClick={() => setShowContactForm(true)}
+              >
                 Explore Platform <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
               <Button
@@ -142,7 +167,7 @@ export default function Home() {
             <div>
               <h2 className="text-4xl font-bold mb-6 text-primary">Built on Modern Technology</h2>
               <p className="text-lg text-muted-foreground mb-6">
-                AgriTech-DZ leverages the latest advancements in IoT sensors, machine learning, and cloud computing to deliver real-time agricultural intelligence.
+                AgriLoop leverages the latest advancements in IoT sensors, machine learning, and cloud computing to deliver real-time agricultural intelligence.
               </p>
               <ul className="space-y-4">
                 {[
@@ -160,8 +185,8 @@ export default function Home() {
             </div>
             <div className="relative">
               <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310419663030816121/cskiKSwKZ7a4oDETY7KpWS/agritech_iot_sensors-oYVEcUqq8WAR3WxxHPrGdE.webp"
-                alt="IoT Sensors"
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310419663030816121/cskiKSwKZ7a4oDETY7KpWS/agriloop_iot_abstract-5FkCFhkeQkHtnLoBccgJcd.webp"
+                alt="IoT Network"
                 className="rounded-xl shadow-lg"
               />
             </div>
@@ -187,7 +212,7 @@ export default function Home() {
               { number: "100%", label: "Organic Ready" },
             ].map((stat, i) => (
               <div key={i} className="text-center">
-              <div className="text-5xl font-bold mb-2 text-secondary-foreground">{stat.number}</div>
+                <div className="text-5xl font-bold mb-2 text-secondary-foreground">{stat.number}</div>
                 <p className="opacity-90">{stat.label}</p>
               </div>
             ))}
@@ -201,8 +226,8 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="relative">
               <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310419663030816121/cskiKSwKZ7a4oDETY7KpWS/agritech_data_visualization-awRCzLYEVBRHdTaigPxZdS.webp"
-                alt="Data Visualization"
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310419663030816121/cskiKSwKZ7a4oDETY7KpWS/agriloop_nature_tech_blend-BzaUnpCY3wBQrYnp7Uhxmv.webp"
+                alt="Analytics Dashboard"
                 className="rounded-xl shadow-lg"
               />
             </div>
@@ -231,20 +256,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Team Section */}
+      {/* Technology Stack Section */}
       <section className="py-20 bg-primary text-primary-foreground">
         <div className="container">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Built by Innovators</h2>
+            <h2 className="text-4xl font-bold mb-4">Powered by Innovation</h2>
             <p className="text-lg opacity-90">
-              A team of engineers and farmers working together to revolutionize agriculture.
+              AgriLoop integrates cutting-edge technologies to deliver unmatched agricultural insights.
             </p>
           </div>
 
           <div className="relative">
             <img
-              src="https://d2xsxph8kpxj0f.cloudfront.net/310419663030816121/cskiKSwKZ7a4oDETY7KpWS/agriloop_team_professional-B4WQSn6hKY8CzGtCpTzXke.webp"
-              alt="AgriLoop Team"
+              src="https://d2xsxph8kpxj0f.cloudfront.net/310419663030816121/cskiKSwKZ7a4oDETY7KpWS/agriloop_abstract_tech-GHGM3f8yzUSA4g42ykX2fq.webp"
+              alt="Technology Stack"
               className="rounded-xl shadow-lg w-full"
             />
           </div>
@@ -256,18 +281,121 @@ export default function Home() {
         <div className="container text-center">
           <h2 className="text-4xl font-bold mb-6 text-primary">Ready to Transform Your Farm?</h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Join the agricultural revolution. Start your free trial today and see how AgriTech-DZ can increase your yields while conserving resources.
+            Join the agricultural revolution. Start your free trial today and see how AgriLoop can increase your yields while conserving resources.
           </p>
-          <div className="flex gap-4 justify-center">
-            <Button size="lg" className="bg-primary hover:bg-primary/90">
+          <div className="flex gap-4 justify-center flex-wrap">
+            <Button
+              size="lg"
+              className="bg-primary hover:bg-primary/90"
+              onClick={() => setShowContactForm(true)}
+            >
               Start Free Trial
             </Button>
-            <Button size="lg" variant="outline">
+            <Button
+              size="lg"
+              variant="outline"
+              onClick={() => setShowContactForm(true)}
+            >
               Schedule Demo
             </Button>
           </div>
         </div>
       </section>
+
+      {/* Contact Form Modal */}
+      {showContactForm && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-xl shadow-2xl max-w-md w-full">
+            <div className="flex items-center justify-between p-6 border-b">
+              <h3 className="text-2xl font-bold text-primary">Get Started with AgriLoop</h3>
+              <button
+                onClick={() => setShowContactForm(false)}
+                className="text-muted-foreground hover:text-foreground"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+
+            <form onSubmit={handleFormSubmit} className="p-6 space-y-4">
+              {submitted ? (
+                <div className="text-center py-8">
+                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-green-600 text-2xl">✓</span>
+                  </div>
+                  <p className="text-foreground font-semibold">Thank you! We'll be in touch soon.</p>
+                </div>
+              ) : (
+                <>
+                  <div>
+                    <label className="block text-sm font-medium text-foreground mb-2">
+                      Full Name
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleFormChange}
+                      required
+                      className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                      placeholder="Your name"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-foreground mb-2">
+                      Email Address
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleFormChange}
+                      required
+                      className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                      placeholder="your@email.com"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-foreground mb-2">
+                      Phone Number
+                    </label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleFormChange}
+                      className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                      placeholder="+213 (optional)"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-foreground mb-2">
+                      Message
+                    </label>
+                    <textarea
+                      name="message"
+                      value={formData.message}
+                      onChange={handleFormChange}
+                      rows={3}
+                      className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                      placeholder="Tell us about your farm..."
+                    />
+                  </div>
+
+                  <Button
+                    type="submit"
+                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
+                  >
+                    Send My Information
+                  </Button>
+                </>
+              )}
+            </form>
+          </div>
+        </div>
+      )}
 
       {/* Footer */}
       <footer className="bg-primary text-primary-foreground py-12">
@@ -276,13 +404,13 @@ export default function Home() {
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <Leaf className="w-6 h-6" />
-                <span className="font-bold">AgriLoop</span>
+                <span className="text-lg font-bold">AgriLoop</span>
               </div>
-              <p className="opacity-75">Empowering Algerian farmers with AI-driven precision agriculture.</p>
+              <p className="opacity-90">Precision agriculture for Algeria's future.</p>
             </div>
             <div>
               <h4 className="font-bold mb-4">Product</h4>
-              <ul className="space-y-2 opacity-75">
+              <ul className="space-y-2 opacity-90">
                 <li><a href="#" className="hover:opacity-100">Features</a></li>
                 <li><a href="#" className="hover:opacity-100">Pricing</a></li>
                 <li><a href="#" className="hover:opacity-100">Security</a></li>
@@ -290,7 +418,7 @@ export default function Home() {
             </div>
             <div>
               <h4 className="font-bold mb-4">Company</h4>
-              <ul className="space-y-2 opacity-75">
+              <ul className="space-y-2 opacity-90">
                 <li><a href="#" className="hover:opacity-100">About</a></li>
                 <li><a href="#" className="hover:opacity-100">Blog</a></li>
                 <li><a href="#" className="hover:opacity-100">Contact</a></li>
@@ -298,13 +426,13 @@ export default function Home() {
             </div>
             <div>
               <h4 className="font-bold mb-4">Legal</h4>
-              <ul className="space-y-2 opacity-75">
+              <ul className="space-y-2 opacity-90">
                 <li><a href="#" className="hover:opacity-100">Privacy</a></li>
                 <li><a href="#" className="hover:opacity-100">Terms</a></li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-primary-foreground/20 pt-8 text-center opacity-75">
+          <div className="border-t border-white/20 pt-8 text-center opacity-90">
             <p>&copy; 2026 AgriLoop. All rights reserved. Transforming agriculture in Algeria.</p>
           </div>
         </div>
