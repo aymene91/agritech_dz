@@ -196,6 +196,42 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Sensor Integration Section */}
+      <section className="py-20 bg-primary text-primary-foreground">
+        <div className="container">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="relative">
+              <img
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310419663030816121/cskiKSwKZ7a4oDETY7KpWS/agriloop_nature_tech_blend-BzaUnpCY3wBQrYnp7Uhxmv.webp"
+                alt="Nature and Technology Integration"
+                className="rounded-xl shadow-lg w-full"
+              />
+            </div>
+            <div>
+              <h2 className="text-4xl font-bold mb-6">Seamless Nature & Technology Integration</h2>
+              <p className="text-lg opacity-90 mb-6">
+                AgriLoop bridges the gap between traditional farming practices and modern digital systems. Our sensors work in harmony with nature, collecting real-time data from soil, water, and atmosphere.
+              </p>
+              <div className="space-y-4">
+                {[
+                  "Soil moisture & nutrient analysis",
+                  "Real-time water flow monitoring",
+                  "Environmental data collection",
+                  "Automated decision-making algorithms",
+                ].map((feature, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-full bg-accent flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-accent-foreground text-sm">✓</span>
+                    </div>
+                    <span>{feature}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Impact Section */}
       <section id="impact" className="py-20 bg-secondary text-secondary-foreground">
         <div className="container">
