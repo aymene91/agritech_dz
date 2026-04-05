@@ -264,8 +264,8 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="relative">
               <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310419663030816121/cskiKSwKZ7a4oDETY7KpWS/agriloop_nature_tech_blend-BzaUnpCY3wBQrYnp7Uhxmv.webp"
-                alt="Analytics Dashboard"
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310419663030816121/cskiKSwKZ7a4oDETY7KpWS/agritech_iot_sensors_6a1e4c08.png"
+                alt="AgriLoop IoT Sensors and Mobile Dashboard"
                 className="rounded-xl shadow-lg"
               />
             </div>
