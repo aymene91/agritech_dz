@@ -202,8 +202,8 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="relative">
               <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310419663030816121/cskiKSwKZ7a4oDETY7KpWS/agriloop_nature_tech_blend-BzaUnpCY3wBQrYnp7Uhxmv.webp"
-                alt="Nature and Technology Integration"
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310419663030816121/cskiKSwKZ7a4oDETY7KpWS/agriloop_drone_watering_crops-ZN3ZAYpXRWAe8Wj8SV6rVq.webp"
+                alt="AgriLoop Drone Watering Crops"
                 className="rounded-xl shadow-lg w-full"
               />
             </div>
