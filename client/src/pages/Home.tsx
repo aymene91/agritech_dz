@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Droplets, BarChart3, Zap, Leaf, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+
 
 /**
  * AgriLoop: AI-Driven Precision Agriculture
@@ -14,10 +15,21 @@ export default function Home() {
   const [showContactForm, setShowContactForm] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [dronePosition, setDronePosition] = useState(0);
+  const droneRef = useRef<HTMLDivElement>(null);
+  const techSectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+      
+      // Drone animation from hero to tech section
+      if (droneRef.current && techSectionRef.current) {
+        const droneStart = 100; // Start position (pixels from top)
+        const droneEnd = techSectionRef.current.offsetTop - 100;
+        const scrollProgress = Math.min(window.scrollY / (droneEnd - droneStart), 1);
+        setDronePosition(scrollProgress * 100);
+      }
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -109,6 +121,47 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Animated Drone */}
+      <div
+        ref={droneRef}
+        className="fixed left-1/2 transform -translate-x-1/2 z-40 pointer-events-none"
+        style={{
+          top: `${100 + dronePosition * 4}vh`,
+          opacity: dronePosition > 0 && dronePosition < 100 ? 1 : 0,
+          transition: "opacity 0.3s ease-in-out",
+        }}
+      >
+        {/* Drone SVG */}
+        <svg
+          width="80"
+          height="80"
+          viewBox="0 0 100 100"
+          className="animate-bounce"
+          style={{
+            filter: "drop-shadow(0 4px 8px rgba(45, 80, 22, 0.3))",
+          }}
+        >
+          {/* Drone Body */}
+          <ellipse cx="50" cy="50" rx="20" ry="25" fill="#2D5016" />
+          {/* Drone Arms */}
+          <line x1="30" y1="50" x2="10" y2="50" stroke="#2D5016" strokeWidth="3" />
+          <line x1="70" y1="50" x2="90" y2="50" stroke="#2D5016" strokeWidth="3" />
+          <line x1="50" y1="30" x2="50" y2="10" stroke="#2D5016" strokeWidth="3" />
+          <line x1="50" y1="70" x2="50" y2="90" stroke="#2D5016" strokeWidth="3" />
+          {/* Propellers */}
+          <circle cx="10" cy="50" r="8" fill="#9ACD32" opacity="0.7" />
+          <circle cx="90" cy="50" r="8" fill="#9ACD32" opacity="0.7" />
+          <circle cx="50" cy="10" r="8" fill="#9ACD32" opacity="0.7" />
+          <circle cx="50" cy="90" r="8" fill="#9ACD32" opacity="0.7" />
+          {/* Water spray effect */}
+          <g opacity="0.6">
+            <line x1="50" y1="65" x2="45" y2="85" stroke="#87CEEB" strokeWidth="2" />
+            <line x1="50" y1="65" x2="50" y2="88" stroke="#87CEEB" strokeWidth="2" />
+            <line x1="50" y1="65" x2="55" y2="85" stroke="#87CEEB" strokeWidth="2" />
+          </g>
+        </svg>
+      </div>
 
       {/* Wave Divider */}
       <div className="wave-divider"></div>
@@ -295,7 +348,7 @@ export default function Home() {
       </section>
 
       {/* Technology Stack Section */}
-      <section className="py-20 bg-primary text-primary-foreground">
+      <section ref={techSectionRef} className="py-20 bg-primary text-primary-foreground">
         <div className="container">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">Powered by Innovation</h2>
