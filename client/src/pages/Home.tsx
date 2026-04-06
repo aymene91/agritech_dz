@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Droplets, BarChart3, Zap, Leaf, X } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
+import Drone3D from "@/components/Drone3D";
 
 /**
  * AgriLoop: AI-Driven Precision Agriculture
@@ -134,47 +135,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Animated Drone */}
-      {showDrone && (
-        <div
-          className="fixed left-1/2 transform -translate-x-1/2 z-40 pointer-events-none"
-          style={{
-            top: `${100 + (dronePosition / 100) * 300}px`,
-            opacity: 1,
-            transition: "none",
-          }}
-        >
-          {/* Drone SVG */}
-          <svg
-            width="80"
-            height="80"
-            viewBox="0 0 100 100"
-            style={{
-              filter: "drop-shadow(0 4px 8px rgba(45, 80, 22, 0.3))",
-              animation: "bounce 2s infinite",
-            }}
-          >
-            {/* Drone Body */}
-            <ellipse cx="50" cy="50" rx="20" ry="25" fill="#2D5016" />
-            {/* Drone Arms */}
-            <line x1="30" y1="50" x2="10" y2="50" stroke="#2D5016" strokeWidth="3" />
-            <line x1="70" y1="50" x2="90" y2="50" stroke="#2D5016" strokeWidth="3" />
-            <line x1="50" y1="30" x2="50" y2="10" stroke="#2D5016" strokeWidth="3" />
-            <line x1="50" y1="70" x2="50" y2="90" stroke="#2D5016" strokeWidth="3" />
-            {/* Propellers */}
-            <circle cx="10" cy="50" r="8" fill="#9ACD32" opacity="0.7" />
-            <circle cx="90" cy="50" r="8" fill="#9ACD32" opacity="0.7" />
-            <circle cx="50" cy="10" r="8" fill="#9ACD32" opacity="0.7" />
-            <circle cx="50" cy="90" r="8" fill="#9ACD32" opacity="0.7" />
-            {/* Water spray effect */}
-            <g opacity="0.6">
-              <line x1="50" y1="65" x2="45" y2="85" stroke="#87CEEB" strokeWidth="2" />
-              <line x1="50" y1="65" x2="50" y2="88" stroke="#87CEEB" strokeWidth="2" />
-              <line x1="50" y1="65" x2="55" y2="85" stroke="#87CEEB" strokeWidth="2" />
-            </g>
-          </svg>
-        </div>
-      )}
+      {/* 3D Animated Drone */}
+      <Drone3D dronePosition={dronePosition} showDrone={showDrone} />
 
       {/* Wave Divider */}
       <div className="wave-divider"></div>
