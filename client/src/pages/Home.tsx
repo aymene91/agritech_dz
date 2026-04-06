@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Droplets, BarChart3, Zap, Leaf, X } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
 
-
 /**
  * AgriLoop: AI-Driven Precision Agriculture
  * Design: Organic Tech Aesthetic
@@ -16,7 +15,7 @@ export default function Home() {
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
   const [dronePosition, setDronePosition] = useState(0);
-  const droneRef = useRef<HTMLDivElement>(null);
+  const [showDrone, setShowDrone] = useState(false);
   const techSectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -24,14 +23,27 @@ export default function Home() {
       setIsScrolled(window.scrollY > 50);
       
       // Drone animation from hero to tech section
-      if (droneRef.current && techSectionRef.current) {
-        const droneStart = 100; // Start position (pixels from top)
-        const droneEnd = techSectionRef.current.offsetTop - 100;
-        const scrollProgress = Math.min(window.scrollY / (droneEnd - droneStart), 1);
-        setDronePosition(scrollProgress * 100);
+      if (techSectionRef.current) {
+        const droneStart = 200; // Start showing drone at 200px scroll
+        const droneEnd = techSectionRef.current.offsetTop; // End at tech section
+        const currentScroll = window.scrollY;
+        
+        if (currentScroll >= droneStart && currentScroll <= droneEnd) {
+          const scrollProgress = (currentScroll - droneStart) / (droneEnd - droneStart);
+          setDronePosition(Math.min(scrollProgress * 100, 100));
+          setShowDrone(true);
+        } else if (currentScroll < droneStart) {
+          setDronePosition(0);
+          setShowDrone(false);
+        } else {
+          setDronePosition(100);
+          setShowDrone(false);
+        }
       }
     };
+    
     window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Call once on mount
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -123,45 +135,46 @@ export default function Home() {
       </section>
 
       {/* Animated Drone */}
-      <div
-        ref={droneRef}
-        className="fixed left-1/2 transform -translate-x-1/2 z-40 pointer-events-none"
-        style={{
-          top: `${100 + dronePosition * 4}vh`,
-          opacity: dronePosition > 0 && dronePosition < 100 ? 1 : 0,
-          transition: "opacity 0.3s ease-in-out",
-        }}
-      >
-        {/* Drone SVG */}
-        <svg
-          width="80"
-          height="80"
-          viewBox="0 0 100 100"
-          className="animate-bounce"
+      {showDrone && (
+        <div
+          className="fixed left-1/2 transform -translate-x-1/2 z-40 pointer-events-none"
           style={{
-            filter: "drop-shadow(0 4px 8px rgba(45, 80, 22, 0.3))",
+            top: `${100 + (dronePosition / 100) * 300}px`,
+            opacity: 1,
+            transition: "none",
           }}
         >
-          {/* Drone Body */}
-          <ellipse cx="50" cy="50" rx="20" ry="25" fill="#2D5016" />
-          {/* Drone Arms */}
-          <line x1="30" y1="50" x2="10" y2="50" stroke="#2D5016" strokeWidth="3" />
-          <line x1="70" y1="50" x2="90" y2="50" stroke="#2D5016" strokeWidth="3" />
-          <line x1="50" y1="30" x2="50" y2="10" stroke="#2D5016" strokeWidth="3" />
-          <line x1="50" y1="70" x2="50" y2="90" stroke="#2D5016" strokeWidth="3" />
-          {/* Propellers */}
-          <circle cx="10" cy="50" r="8" fill="#9ACD32" opacity="0.7" />
-          <circle cx="90" cy="50" r="8" fill="#9ACD32" opacity="0.7" />
-          <circle cx="50" cy="10" r="8" fill="#9ACD32" opacity="0.7" />
-          <circle cx="50" cy="90" r="8" fill="#9ACD32" opacity="0.7" />
-          {/* Water spray effect */}
-          <g opacity="0.6">
-            <line x1="50" y1="65" x2="45" y2="85" stroke="#87CEEB" strokeWidth="2" />
-            <line x1="50" y1="65" x2="50" y2="88" stroke="#87CEEB" strokeWidth="2" />
-            <line x1="50" y1="65" x2="55" y2="85" stroke="#87CEEB" strokeWidth="2" />
-          </g>
-        </svg>
-      </div>
+          {/* Drone SVG */}
+          <svg
+            width="80"
+            height="80"
+            viewBox="0 0 100 100"
+            style={{
+              filter: "drop-shadow(0 4px 8px rgba(45, 80, 22, 0.3))",
+              animation: "bounce 2s infinite",
+            }}
+          >
+            {/* Drone Body */}
+            <ellipse cx="50" cy="50" rx="20" ry="25" fill="#2D5016" />
+            {/* Drone Arms */}
+            <line x1="30" y1="50" x2="10" y2="50" stroke="#2D5016" strokeWidth="3" />
+            <line x1="70" y1="50" x2="90" y2="50" stroke="#2D5016" strokeWidth="3" />
+            <line x1="50" y1="30" x2="50" y2="10" stroke="#2D5016" strokeWidth="3" />
+            <line x1="50" y1="70" x2="50" y2="90" stroke="#2D5016" strokeWidth="3" />
+            {/* Propellers */}
+            <circle cx="10" cy="50" r="8" fill="#9ACD32" opacity="0.7" />
+            <circle cx="90" cy="50" r="8" fill="#9ACD32" opacity="0.7" />
+            <circle cx="50" cy="10" r="8" fill="#9ACD32" opacity="0.7" />
+            <circle cx="50" cy="90" r="8" fill="#9ACD32" opacity="0.7" />
+            {/* Water spray effect */}
+            <g opacity="0.6">
+              <line x1="50" y1="65" x2="45" y2="85" stroke="#87CEEB" strokeWidth="2" />
+              <line x1="50" y1="65" x2="50" y2="88" stroke="#87CEEB" strokeWidth="2" />
+              <line x1="50" y1="65" x2="55" y2="85" stroke="#87CEEB" strokeWidth="2" />
+            </g>
+          </svg>
+        </div>
+      )}
 
       {/* Wave Divider */}
       <div className="wave-divider"></div>
@@ -311,7 +324,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Data Visualization Section */}
+      {/* Analytics Dashboard Section */}
       <section className="py-20 bg-background">
         <div className="container">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -331,14 +344,12 @@ export default function Home() {
                 {[
                   "Soil moisture & temperature tracking",
                   "Crop health monitoring via satellite imagery",
-                  "Weather forecasting & alerts",
+                  "Predictive disease alerts",
                   "Automated irrigation scheduling",
                 ].map((feature, i) => (
-                  <div key={i} className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-accent flex items-center justify-center flex-shrink-0 mt-1">
-                      <span className="text-accent-foreground text-sm">✓</span>
-                    </div>
-                    <span className="text-foreground">{feature}</span>
+                  <div key={i} className="flex items-center gap-3">
+                    <div className="w-2 h-2 rounded-full bg-accent"></div>
+                    <span className="text-muted-foreground">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -401,85 +412,59 @@ export default function Home() {
               <h3 className="text-2xl font-bold text-primary">Get Started with AgriLoop</h3>
               <button
                 onClick={() => setShowContactForm(false)}
-                className="text-muted-foreground hover:text-foreground"
+                className="text-gray-500 hover:text-gray-700"
               >
-                <X className="w-6 h-6" />
+                <X className="w-5 h-5" />
               </button>
             </div>
-
             <form onSubmit={handleFormSubmit} className="p-6 space-y-4">
               {submitted ? (
                 <div className="text-center py-8">
-                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-green-600 text-2xl">✓</span>
-                  </div>
-                  <p className="text-foreground font-semibold">Thank you! We'll be in touch soon.</p>
+                  <div className="text-4xl mb-4">✓</div>
+                  <p className="text-lg font-semibold text-primary">Thank you!</p>
+                  <p className="text-gray-600">We'll be in touch shortly.</p>
                 </div>
               ) : (
                 <>
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
-                      Full Name
-                    </label>
-                    <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleFormChange}
-                      required
-                      className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                      placeholder="Your name"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
-                      Email Address
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleFormChange}
-                      required
-                      className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                      placeholder="your@email.com"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
-                      Phone Number
-                    </label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleFormChange}
-                      className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                      placeholder="+213 (optional)"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-2">
-                      Message
-                    </label>
-                    <textarea
-                      name="message"
-                      value={formData.message}
-                      onChange={handleFormChange}
-                      rows={3}
-                      className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                      placeholder="Tell us about your farm..."
-                    />
-                  </div>
-
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Your Name"
+                    value={formData.name}
+                    onChange={handleFormChange}
+                    required
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  />
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Your Email"
+                    value={formData.email}
+                    onChange={handleFormChange}
+                    required
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  />
+                  <input
+                    type="tel"
+                    name="phone"
+                    placeholder="Your Phone"
+                    value={formData.phone}
+                    onChange={handleFormChange}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                  />
+                  <textarea
+                    name="message"
+                    placeholder="Your Message"
+                    value={formData.message}
+                    onChange={handleFormChange}
+                    rows={4}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary resize-none"
+                  ></textarea>
                   <Button
                     type="submit"
-                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
+                    className="w-full bg-primary hover:bg-primary/90 text-white"
                   >
-                    Send My Information
+                    Send Message
                   </Button>
                 </>
               )}
@@ -493,18 +478,15 @@ export default function Home() {
         <div className="container">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
-              <div className="flex items-center gap-2 mb-4">
-                <Leaf className="w-6 h-6" />
-                <span className="text-lg font-bold">AgriLoop</span>
-              </div>
-              <p className="opacity-90">Precision agriculture for Algeria's future.</p>
+              <h4 className="font-bold mb-4">AgriLoop</h4>
+              <p className="opacity-90">Transforming agriculture through AI and IoT innovation.</p>
             </div>
             <div>
               <h4 className="font-bold mb-4">Product</h4>
               <ul className="space-y-2 opacity-90">
-                <li><a href="#" className="hover:opacity-100">Features</a></li>
-                <li><a href="#" className="hover:opacity-100">Pricing</a></li>
-                <li><a href="#" className="hover:opacity-100">Security</a></li>
+                <li><a href="#features" className="hover:opacity-100">Features</a></li>
+                <li><a href="#technology" className="hover:opacity-100">Technology</a></li>
+                <li><a href="#impact" className="hover:opacity-100">Impact</a></li>
               </ul>
             </div>
             <div>
@@ -524,7 +506,7 @@ export default function Home() {
             </div>
           </div>
           <div className="border-t border-white/20 pt-8 text-center opacity-90">
-            <p>&copy; 2026 AgriLoop. All rights reserved. Transforming agriculture in Algeria.</p>
+            <p>&copy; 2026 AgriLoop. All rights reserved.</p>
           </div>
         </div>
       </footer>
