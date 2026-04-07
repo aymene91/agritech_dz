@@ -56,10 +56,11 @@ export default function Home() {
       >
         <div className="container flex items-center justify-between h-16">
           <div className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-              <Leaf className="w-6 h-6 text-primary-foreground" />
-            </div>
-            <span className="text-xl font-bold text-primary">Verda AI</span>
+            <img 
+              src="https://d2xsxph8kpxj0f.cloudfront.net/310419663030816121/cskiKSwKZ7a4oDETY7KpWS/verda_ai_logo_2-BgMoNJUL7vYkYVei6RxVQd.webp" 
+              alt="Verda AI Logo" 
+              className="h-10 w-auto"
+            />
           </div>
           <div className="hidden md:flex items-center gap-8">
             <a href="#features" className="text-foreground hover:text-primary transition">
