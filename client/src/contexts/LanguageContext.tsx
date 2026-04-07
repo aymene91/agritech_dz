@@ -7,7 +7,9 @@ interface LanguageContextType {
   setLanguage: (lang: Language) => void;
 }
 
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+const LanguageContext = createContext<LanguageContextType | undefined>(
+  undefined
+);
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguage] = useState<Language>("en");
@@ -34,24 +36,30 @@ export const translations = {
     impact: "Impact",
     getStarted: "Get Started",
     exploreTitle: "Engineer the Future of Agriculture",
-    exploreSubtitle: "Verda AI combines AI, IoT, and precision farming to help Algerian farmers maximize yields, conserve water, and embrace sustainable agriculture.",
+    exploreSubtitle:
+      "Verda AI combines AI, IoT, and precision farming to help Algerian farmers maximize yields, conserve water, and embrace sustainable agriculture.",
     explorePlatform: "Explore Platform",
     startFreeTrial: "Start Free Trial",
     whyVerdaAI: "Why Verda AI?",
     smartWater: "Smart Water Management",
-    smartWaterDesc: "Real-time soil moisture monitoring reduces water waste by up to 40% while maintaining optimal crop health.",
+    smartWaterDesc:
+      "Real-time soil moisture monitoring reduces water waste by up to 40% while maintaining optimal crop health.",
     aiPowered: "AI-Powered Insights",
-    aiPoweredDesc: "Predictive analytics for crop disease detection, yield forecasting, and optimal harvest timing.",
+    aiPoweredDesc:
+      "Predictive analytics for crop disease detection, yield forecasting, and optimal harvest timing.",
     automated: "Automated Systems",
-    automatedDesc: "IoT-enabled irrigation automation and real-time alerts keep your farm running efficiently 24/7.",
+    automatedDesc:
+      "IoT-enabled irrigation automation and real-time alerts keep your farm running efficiently 24/7.",
     builtOnModern: "Built on Modern Technology",
-    builtOnModernDesc: "Verda AI leverages the latest advancements in IoT sensors, machine learning, and cloud computing to deliver real-time agricultural intelligence.",
+    builtOnModernDesc:
+      "Verda AI leverages the latest advancements in IoT sensors, machine learning, and cloud computing to deliver real-time agricultural intelligence.",
     advancedIoT: "Advanced IoT Sensor Network",
     machineLearning: "Machine Learning Models",
     realtimeData: "Real-Time Data Processing",
     mobileWeb: "Mobile & Web Applications",
     seamless: "Seamless Nature & Technology Integration",
-    seamlessDesc: "Verda AI bridges the gap between traditional farming practices and modern digital systems. Our sensors work in harmony with nature, collecting real-time data from soil, water, and atmosphere.",
+    seamlessDesc:
+      "Verda AI bridges the gap between traditional farming practices and modern digital systems. Our sensors work in harmony with nature, collecting real-time data from soil, water, and atmosphere.",
     soilMoisture: "Soil moisture & nutrient analysis",
     waterFlow: "Real-time water flow monitoring",
     environmental: "Environmental data collection",
@@ -62,15 +70,18 @@ export const translations = {
     monitoring: "Monitoring",
     organicReady: "Organic Ready",
     realtime: "Real-Time Analytics Dashboard",
-    realtimeDesc: "Monitor every aspect of your farm from your smartphone or desktop. Get actionable insights delivered instantly.",
+    realtimeDesc:
+      "Monitor every aspect of your farm from your smartphone or desktop. Get actionable insights delivered instantly.",
     soilTracking: "Soil moisture & temperature tracking",
     cropHealth: "Crop health monitoring via satellite imagery",
     diseaseAlerts: "Predictive disease alerts",
     irrigationScheduling: "Automated irrigation scheduling",
     poweredBy: "Powered by Innovation",
-    poweredByDesc: "Verda AI integrates cutting-edge technologies to deliver unmatched agricultural insights.",
+    poweredByDesc:
+      "Verda AI integrates cutting-edge technologies to deliver unmatched agricultural insights.",
     ready: "Ready to Transform Your Farm?",
-    readyDesc: "Join the agricultural revolution. Start your free trial today and see how Verda AI can increase your yields while conserving resources.",
+    readyDesc:
+      "Join the agricultural revolution. Start your free trial today and see how Verda AI can increase your yields while conserving resources.",
     scheduleDemo: "Schedule Demo",
     product: "Product",
     company: "Company",
@@ -100,24 +111,30 @@ export const translations = {
     impact: "التأثير",
     getStarted: "ابدأ الآن",
     exploreTitle: "هندسة مستقبل الزراعة",
-    exploreSubtitle: "يجمع Verda AI بين الذكاء الاصطناعي وإنترنت الأشياء والزراعة الدقيقة لمساعدة المزارعين الجزائريين على زيادة الإنتاجية وتوفير المياه واعتناق الزراعة المستدامة.",
+    exploreSubtitle:
+      "يجمع Verda AI بين الذكاء الاصطناعي وإنترنت الأشياء والزراعة الدقيقة لمساعدة المزارعين الجزائريين على زيادة الإنتاجية وتوفير المياه واعتناق الزراعة المستدامة.",
     explorePlatform: "استكشف المنصة",
     startFreeTrial: "ابدأ النسخة المجانية",
     whyVerdaAI: "لماذا Verda AI؟",
     smartWater: "إدارة المياه الذكية",
-    smartWaterDesc: "يقلل مراقبة رطوبة التربة في الوقت الفعلي هدر المياه بنسبة تصل إلى 40% مع الحفاظ على صحة المحاصيل المثلى.",
+    smartWaterDesc:
+      "يقلل مراقبة رطوبة التربة في الوقت الفعلي هدر المياه بنسبة تصل إلى 40% مع الحفاظ على صحة المحاصيل المثلى.",
     aiPowered: "رؤى مدعومة بالذكاء الاصطناعي",
-    aiPoweredDesc: "تحليلات تنبؤية لكشف أمراض المحاصيل والتنبؤ بالإنتاجية والحصاد الأمثل.",
+    aiPoweredDesc:
+      "تحليلات تنبؤية لكشف أمراض المحاصيل والتنبؤ بالإنتاجية والحصاد الأمثل.",
     automated: "الأنظمة الآلية",
-    automatedDesc: "تشغيل الري الآلي المدعوم بإنترنت الأشياء والتنبيهات في الوقت الفعلي تحافظ على مزرعتك تعمل بكفاءة 24/7.",
+    automatedDesc:
+      "تشغيل الري الآلي المدعوم بإنترنت الأشياء والتنبيهات في الوقت الفعلي تحافظ على مزرعتك تعمل بكفاءة 24/7.",
     builtOnModern: "مبني على التكنولوجيا الحديثة",
-    builtOnModernDesc: "يستفيد Verda AI من أحدث التطورات في مستشعرات إنترنت الأشياء والتعلم الآلي والحوسبة السحابية لتقديم ذكاء زراعي في الوقت الفعلي.",
+    builtOnModernDesc:
+      "يستفيد Verda AI من أحدث التطورات في مستشعرات إنترنت الأشياء والتعلم الآلي والحوسبة السحابية لتقديم ذكاء زراعي في الوقت الفعلي.",
     advancedIoT: "شبكة مستشعرات إنترنت الأشياء المتقدمة",
     machineLearning: "نماذج التعلم الآلي",
     realtimeData: "معالجة البيانات في الوقت الفعلي",
     mobileWeb: "تطبيقات الهاتف المحمول والويب",
     seamless: "التكامل السلس بين الطبيعة والتكنولوجيا",
-    seamlessDesc: "يسد Verda AI الفجوة بين ممارسات الزراعة التقليدية والأنظمة الرقمية الحديثة. تعمل مستشعراتنا بتناغم مع الطبيعة، وتجمع البيانات في الوقت الفعلي من التربة والمياه والغلاف الجوي.",
+    seamlessDesc:
+      "يسد Verda AI الفجوة بين ممارسات الزراعة التقليدية والأنظمة الرقمية الحديثة. تعمل مستشعراتنا بتناغم مع الطبيعة، وتجمع البيانات في الوقت الفعلي من التربة والمياه والغلاف الجوي.",
     soilMoisture: "تحليل رطوبة التربة والمغذيات",
     waterFlow: "مراقبة تدفق المياه في الوقت الفعلي",
     environmental: "جمع البيانات البيئية",
@@ -128,7 +145,8 @@ export const translations = {
     monitoring: "المراقبة",
     organicReady: "جاهز للزراعة العضوية",
     realtime: "لوحة معلومات التحليلات في الوقت الفعلي",
-    realtimeDesc: "راقب كل جوانب مزرعتك من هاتفك الذكي أو سطح المكتب. احصل على رؤى قابلة للتنفيذ على الفور.",
+    realtimeDesc:
+      "راقب كل جوانب مزرعتك من هاتفك الذكي أو سطح المكتب. احصل على رؤى قابلة للتنفيذ على الفور.",
     soilTracking: "تتبع رطوبة التربة ودرجة الحرارة",
     cropHealth: "مراقبة صحة المحاصيل عبر صور الأقمار الصناعية",
     diseaseAlerts: "تنبيهات الأمراض التنبؤية",
@@ -136,7 +154,8 @@ export const translations = {
     poweredBy: "مدعوم بالابتكار",
     poweredByDesc: "يدمج Verda AI أحدث التقنيات لتقديم رؤى زراعية لا مثيل لها.",
     ready: "هل أنت مستعد لتحويل مزرعتك؟",
-    readyDesc: "انضم إلى الثورة الزراعية. ابدأ نسختك المجانية اليوم وشاهد كيف يمكن لـ Verda AI زيادة إنتاجيتك مع توفير الموارد.",
+    readyDesc:
+      "انضم إلى الثورة الزراعية. ابدأ نسختك المجانية اليوم وشاهد كيف يمكن لـ Verda AI زيادة إنتاجيتك مع توفير الموارد.",
     scheduleDemo: "جدول عرض توضيحي",
     product: "المنتج",
     company: "الشركة",
@@ -166,24 +185,30 @@ export const translations = {
     impact: "Impact",
     getStarted: "Commencer",
     exploreTitle: "Ingénierie de l'Avenir de l'Agriculture",
-    exploreSubtitle: "Verda AI combine l'IA, l'IoT et l'agriculture de précision pour aider les agriculteurs algériens à maximiser les rendements, économiser l'eau et adopter l'agriculture durable.",
+    exploreSubtitle:
+      "Verda AI combine l'IA, l'IoT et l'agriculture de précision pour aider les agriculteurs algériens à maximiser les rendements, économiser l'eau et adopter l'agriculture durable.",
     explorePlatform: "Explorer la Plateforme",
     startFreeTrial: "Commencer l'Essai Gratuit",
     whyVerdaAI: "Pourquoi Verda AI?",
     smartWater: "Gestion Intelligente de l'Eau",
-    smartWaterDesc: "La surveillance en temps réel de l'humidité du sol réduit le gaspillage d'eau jusqu'à 40% tout en maintenant une santé optimale des cultures.",
+    smartWaterDesc:
+      "La surveillance en temps réel de l'humidité du sol réduit le gaspillage d'eau jusqu'à 40% tout en maintenant une santé optimale des cultures.",
     aiPowered: "Insights Alimentés par l'IA",
-    aiPoweredDesc: "Analyses prédictives pour la détection des maladies des cultures, la prévision des rendements et la récolte optimale.",
+    aiPoweredDesc:
+      "Analyses prédictives pour la détection des maladies des cultures, la prévision des rendements et la récolte optimale.",
     automated: "Systèmes Automatisés",
-    automatedDesc: "L'irrigation automatisée activée par l'IoT et les alertes en temps réel maintiennent votre ferme fonctionnant efficacement 24h/24.",
+    automatedDesc:
+      "L'irrigation automatisée activée par l'IoT et les alertes en temps réel maintiennent votre ferme fonctionnant efficacement 24h/24.",
     builtOnModern: "Construit sur la Technologie Moderne",
-    builtOnModernDesc: "Verda AI exploite les dernières avancées en capteurs IoT, apprentissage automatique et informatique en nuage pour fournir une intelligence agricole en temps réel.",
+    builtOnModernDesc:
+      "Verda AI exploite les dernières avancées en capteurs IoT, apprentissage automatique et informatique en nuage pour fournir une intelligence agricole en temps réel.",
     advancedIoT: "Réseau Avancé de Capteurs IoT",
     machineLearning: "Modèles d'Apprentissage Automatique",
     realtimeData: "Traitement des Données en Temps Réel",
     mobileWeb: "Applications Mobiles et Web",
     seamless: "Intégration Transparente Nature et Technologie",
-    seamlessDesc: "Verda AI comble le fossé entre les pratiques agricoles traditionnelles et les systèmes numériques modernes. Nos capteurs travaillent en harmonie avec la nature, collectant des données en temps réel du sol, de l'eau et de l'atmosphère.",
+    seamlessDesc:
+      "Verda AI comble le fossé entre les pratiques agricoles traditionnelles et les systèmes numériques modernes. Nos capteurs travaillent en harmonie avec la nature, collectant des données en temps réel du sol, de l'eau et de l'atmosphère.",
     soilMoisture: "Analyse de l'humidité et des nutriments du sol",
     waterFlow: "Surveillance du débit d'eau en temps réel",
     environmental: "Collecte de données environnementales",
@@ -194,15 +219,18 @@ export const translations = {
     monitoring: "Surveillance",
     organicReady: "Prêt pour l'Agriculture Biologique",
     realtime: "Tableau de Bord d'Analyse en Temps Réel",
-    realtimeDesc: "Surveillez chaque aspect de votre ferme depuis votre téléphone ou ordinateur de bureau. Obtenez des insights actionnables instantanément.",
+    realtimeDesc:
+      "Surveillez chaque aspect de votre ferme depuis votre téléphone ou ordinateur de bureau. Obtenez des insights actionnables instantanément.",
     soilTracking: "Suivi de l'humidité et de la température du sol",
     cropHealth: "Surveillance de la santé des cultures via imagerie satellite",
     diseaseAlerts: "Alertes de maladies prédictives",
     irrigationScheduling: "Planification d'irrigation automatisée",
     poweredBy: "Alimenté par l'Innovation",
-    poweredByDesc: "Verda AI intègre les technologies de pointe pour fournir des insights agricoles inégalés.",
+    poweredByDesc:
+      "Verda AI intègre les technologies de pointe pour fournir des insights agricoles inégalés.",
     ready: "Prêt à Transformer Votre Ferme?",
-    readyDesc: "Rejoignez la révolution agricole. Commencez votre essai gratuit aujourd'hui et voyez comment Verda AI peut augmenter vos rendements tout en conservant les ressources.",
+    readyDesc:
+      "Rejoignez la révolution agricole. Commencez votre essai gratuit aujourd'hui et voyez comment Verda AI peut augmenter vos rendements tout en conservant les ressources.",
     scheduleDemo: "Planifier une Démo",
     product: "Produit",
     company: "Entreprise",
@@ -232,24 +260,30 @@ export const translations = {
     impact: "Impatto",
     getStarted: "Inizia",
     exploreTitle: "Ingegneria del Futuro dell'Agricoltura",
-    exploreSubtitle: "Verda AI combina AI, IoT e agricoltura di precisione per aiutare gli agricoltori algerini a massimizzare i rendimenti, conservare l'acqua e abbracciare l'agricoltura sostenibile.",
+    exploreSubtitle:
+      "Verda AI combina AI, IoT e agricoltura di precisione per aiutare gli agricoltori algerini a massimizzare i rendimenti, conservare l'acqua e abbracciare l'agricoltura sostenibile.",
     explorePlatform: "Esplora Piattaforma",
     startFreeTrial: "Inizia Prova Gratuita",
     whyVerdaAI: "Perché Verda AI?",
     smartWater: "Gestione Intelligente dell'Acqua",
-    smartWaterDesc: "Il monitoraggio in tempo reale dell'umidità del suolo riduce gli sprechi d'acqua fino al 40% mantenendo una salute ottimale delle colture.",
+    smartWaterDesc:
+      "Il monitoraggio in tempo reale dell'umidità del suolo riduce gli sprechi d'acqua fino al 40% mantenendo una salute ottimale delle colture.",
     aiPowered: "Insights Alimentati da AI",
-    aiPoweredDesc: "Analitiche predittive per il rilevamento delle malattie delle colture, la previsione dei rendimenti e il raccolto ottimale.",
+    aiPoweredDesc:
+      "Analitiche predittive per il rilevamento delle malattie delle colture, la previsione dei rendimenti e il raccolto ottimale.",
     automated: "Sistemi Automatizzati",
-    automatedDesc: "L'irrigazione automatizzata abilitata da IoT e gli avvisi in tempo reale mantengono la tua fattoria funzionante in modo efficiente 24/7.",
+    automatedDesc:
+      "L'irrigazione automatizzata abilitata da IoT e gli avvisi in tempo reale mantengono la tua fattoria funzionante in modo efficiente 24/7.",
     builtOnModern: "Costruito su Tecnologia Moderna",
-    builtOnModernDesc: "Verda AI sfrutta i più recenti progressi nei sensori IoT, nell'apprendimento automatico e nel cloud computing per fornire intelligenza agricola in tempo reale.",
+    builtOnModernDesc:
+      "Verda AI sfrutta i più recenti progressi nei sensori IoT, nell'apprendimento automatico e nel cloud computing per fornire intelligenza agricola in tempo reale.",
     advancedIoT: "Rete Avanzata di Sensori IoT",
     machineLearning: "Modelli di Apprendimento Automatico",
     realtimeData: "Elaborazione Dati in Tempo Reale",
     mobileWeb: "Applicazioni Mobili e Web",
     seamless: "Integrazione Trasparente Natura e Tecnologia",
-    seamlessDesc: "Verda AI colma il divario tra le pratiche agricole tradizionali e i sistemi digitali moderni. I nostri sensori lavorano in armonia con la natura, raccogliendo dati in tempo reale da suolo, acqua e atmosfera.",
+    seamlessDesc:
+      "Verda AI colma il divario tra le pratiche agricole tradizionali e i sistemi digitali moderni. I nostri sensori lavorano in armonia con la natura, raccogliendo dati in tempo reale da suolo, acqua e atmosfera.",
     soilMoisture: "Analisi dell'umidità e dei nutrienti del suolo",
     waterFlow: "Monitoraggio del flusso d'acqua in tempo reale",
     environmental: "Raccolta dati ambientali",
@@ -260,15 +294,19 @@ export const translations = {
     monitoring: "Monitoraggio",
     organicReady: "Pronto per l'Agricoltura Biologica",
     realtime: "Dashboard Analitiche in Tempo Reale",
-    realtimeDesc: "Monitora ogni aspetto della tua fattoria dal tuo smartphone o desktop. Ottieni insights azionabili istantaneamente.",
+    realtimeDesc:
+      "Monitora ogni aspetto della tua fattoria dal tuo smartphone o desktop. Ottieni insights azionabili istantaneamente.",
     soilTracking: "Tracciamento dell'umidità e della temperatura del suolo",
-    cropHealth: "Monitoraggio della salute delle colture tramite immagini satellitari",
+    cropHealth:
+      "Monitoraggio della salute delle colture tramite immagini satellitari",
     diseaseAlerts: "Avvisi di malattie predittive",
     irrigationScheduling: "Programmazione irrigazione automatizzata",
     poweredBy: "Alimentato dall'Innovazione",
-    poweredByDesc: "Verda AI integra tecnologie all'avanguardia per fornire insights agricoli senza pari.",
+    poweredByDesc:
+      "Verda AI integra tecnologie all'avanguardia per fornire insights agricoli senza pari.",
     ready: "Pronto a Trasformare la Tua Fattoria?",
-    readyDesc: "Unisciti alla rivoluzione agricola. Inizia la tua prova gratuita oggi e scopri come Verda AI può aumentare i tuoi rendimenti conservando le risorse.",
+    readyDesc:
+      "Unisciti alla rivoluzione agricola. Inizia la tua prova gratuita oggi e scopri come Verda AI può aumentare i tuoi rendimenti conservando le risorse.",
     scheduleDemo: "Programma Demo",
     product: "Prodotto",
     company: "Azienda",
