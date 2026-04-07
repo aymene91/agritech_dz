@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Droplets, BarChart3, Zap, Leaf, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useLanguage, translations } from "@/contexts/LanguageContext";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 /**
  * Verda AI: AI-Driven Precision Agriculture
@@ -10,10 +12,13 @@ import { useEffect, useState } from "react";
  */
 
 export default function Home() {
+  const { language } = useLanguage();
+  const t = translations[language];
   const [isScrolled, setIsScrolled] = useState(false);
   const [showContactForm, setShowContactForm] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const isRTL = language === "ar";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,7 +47,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className={`min-h-screen bg-background text-foreground ${isRTL ? "rtl" : "ltr"}`} dir={isRTL ? "rtl" : "ltr"}>
       {/* Navigation */}
       <nav
         className={`fixed top-0 w-full z-50 transition-all duration-300 ${
@@ -58,16 +63,17 @@ export default function Home() {
           </div>
           <div className="hidden md:flex items-center gap-8">
             <a href="#features" className="text-foreground hover:text-primary transition">
-              Features
+              {t.features}
             </a>
             <a href="#technology" className="text-foreground hover:text-primary transition">
-              Technology
+              {t.technology}
             </a>
             <a href="#impact" className="text-foreground hover:text-primary transition">
-              Impact
+              {t.impact}
             </a>
+            <LanguageSwitcher />
             <Button className="bg-primary hover:bg-primary/90" onClick={() => setShowContactForm(true)}>
-              Get Started
+              {t.getStarted}
             </Button>
           </div>
         </div>
@@ -78,10 +84,10 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl">
             <h1 className="text-5xl md:text-6xl font-bold mb-6 text-primary">
-              Engineer the Future of Agriculture
+              {t.exploreTitle}
             </h1>
             <p className="text-lg md:text-xl text-foreground/80 mb-8 leading-relaxed">
-              Verda AI combines AI, IoT, and precision farming to help Algerian farmers maximize yields, conserve water, and embrace sustainable agriculture.
+              {t.exploreSubtitle}
             </p>
             <div className="flex gap-4 flex-wrap">
               <Button 
@@ -89,14 +95,14 @@ export default function Home() {
                 className="bg-accent hover:bg-accent/90"
                 onClick={() => setShowContactForm(true)}
               >
-                Explore Platform <ArrowRight className="ml-2 w-4 h-4" />
+                {t.explorePlatform} <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
               <Button 
                 size="lg" 
                 variant="outline"
                 onClick={() => setShowContactForm(true)}
               >
-                Start Free Trial
+                {t.startFreeTrial}
               </Button>
             </div>
           </div>
@@ -109,32 +115,32 @@ export default function Home() {
       {/* Features Section */}
       <section id="features" className="py-20 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-12 text-center">Why Verda AI?</h2>
+          <h2 className="text-4xl font-bold mb-12 text-center">{t.whyVerdaAI}</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {/* Feature 1 */}
             <div className="bg-white/10 p-8 rounded-lg backdrop-blur-sm hover:bg-white/20 transition">
               <Droplets className="w-12 h-12 mb-4 text-accent" />
-              <h3 className="text-2xl font-bold mb-3">Smart Water Management</h3>
+              <h3 className="text-2xl font-bold mb-3">{t.smartWater}</h3>
               <p className="text-primary-foreground/90">
-                Real-time soil moisture monitoring reduces water waste by up to 40% while maintaining optimal crop health.
+                {t.smartWaterDesc}
               </p>
             </div>
 
             {/* Feature 2 */}
             <div className="bg-white/10 p-8 rounded-lg backdrop-blur-sm hover:bg-white/20 transition">
               <BarChart3 className="w-12 h-12 mb-4 text-accent" />
-              <h3 className="text-2xl font-bold mb-3">AI-Powered Insights</h3>
+              <h3 className="text-2xl font-bold mb-3">{t.aiPowered}</h3>
               <p className="text-primary-foreground/90">
-                Predictive analytics for crop disease detection, yield forecasting, and optimal harvest timing.
+                {t.aiPoweredDesc}
               </p>
             </div>
 
             {/* Feature 3 */}
             <div className="bg-white/10 p-8 rounded-lg backdrop-blur-sm hover:bg-white/20 transition">
               <Zap className="w-12 h-12 mb-4 text-accent" />
-              <h3 className="text-2xl font-bold mb-3">Automated Systems</h3>
+              <h3 className="text-2xl font-bold mb-3">{t.automated}</h3>
               <p className="text-primary-foreground/90">
-                IoT-enabled irrigation automation and real-time alerts keep your farm running efficiently 24/7.
+                {t.automatedDesc}
               </p>
             </div>
           </div>
@@ -147,7 +153,7 @@ export default function Home() {
       {/* Technology Section */}
       <section id="technology" className="py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-12">Built on Modern Technology</h2>
+          <h2 className="text-4xl font-bold mb-12">{t.builtOnModern}</h2>
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <img 
@@ -158,24 +164,24 @@ export default function Home() {
             </div>
             <div>
               <p className="text-lg text-foreground/80 mb-6 leading-relaxed">
-                Verda AI leverages the latest advancements in IoT sensors, machine learning, and cloud computing to deliver real-time agricultural intelligence.
+                {t.builtOnModernDesc}
               </p>
               <ul className="space-y-3">
                 <li className="flex items-center gap-3">
                   <div className="w-2 h-2 bg-accent rounded-full"></div>
-                  <span>Advanced IoT Sensor Network</span>
+                  <span>{t.advancedIoT}</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <div className="w-2 h-2 bg-accent rounded-full"></div>
-                  <span>Machine Learning Models</span>
+                  <span>{t.machineLearning}</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <div className="w-2 h-2 bg-accent rounded-full"></div>
-                  <span>Real-Time Data Processing</span>
+                  <span>{t.realtimeData}</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <div className="w-2 h-2 bg-accent rounded-full"></div>
-                  <span>Mobile & Web Applications</span>
+                  <span>{t.mobileWeb}</span>
                 </li>
               </ul>
             </div>
@@ -189,7 +195,7 @@ export default function Home() {
       {/* Sensor Integration Section */}
       <section className="py-20 bg-secondary/10">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-12">Seamless Nature & Technology Integration</h2>
+          <h2 className="text-4xl font-bold mb-12">{t.seamless}</h2>
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <img 
@@ -200,24 +206,24 @@ export default function Home() {
             </div>
             <div>
               <p className="text-lg text-foreground/80 mb-6 leading-relaxed">
-                Verda AI bridges the gap between traditional farming practices and modern digital systems. Our sensors work in harmony with nature, collecting real-time data from soil, water, and atmosphere.
+                {t.seamlessDesc}
               </p>
               <ul className="space-y-3">
                 <li className="flex items-center gap-3">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  <span>Soil moisture & nutrient analysis</span>
+                  <span>{t.soilMoisture}</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  <span>Real-time water flow monitoring</span>
+                  <span>{t.waterFlow}</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  <span>Environmental data collection</span>
+                  <span>{t.environmental}</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
-                  <span>Automated decision-making algorithms</span>
+                  <span>{t.automated2}</span>
                 </li>
               </ul>
             </div>
@@ -231,23 +237,23 @@ export default function Home() {
       {/* Impact Section */}
       <section id="impact" className="py-20 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-12 text-center">Transforming Agriculture in Algeria</h2>
+          <h2 className="text-4xl font-bold mb-12 text-center">{t.transforming}</h2>
           <div className="grid md:grid-cols-4 gap-8 text-center">
             <div>
               <div className="text-5xl font-bold mb-2">+40%</div>
-              <p className="text-primary-foreground/90">Water Savings</p>
+              <p className="text-primary-foreground/90">{t.waterSavings}</p>
             </div>
             <div>
               <div className="text-5xl font-bold mb-2">+35%</div>
-              <p className="text-primary-foreground/90">Yield Increase</p>
+              <p className="text-primary-foreground/90">{t.yieldIncrease}</p>
             </div>
             <div>
               <div className="text-5xl font-bold mb-2">24/7</div>
-              <p className="text-primary-foreground/90">Monitoring</p>
+              <p className="text-primary-foreground/90">{t.monitoring}</p>
             </div>
             <div>
               <div className="text-5xl font-bold mb-2">100%</div>
-              <p className="text-primary-foreground/90">Organic Ready</p>
+              <p className="text-primary-foreground/90">{t.organicReady}</p>
             </div>
           </div>
         </div>
@@ -259,7 +265,7 @@ export default function Home() {
       {/* Analytics Dashboard Section */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-12">Real-Time Analytics Dashboard</h2>
+          <h2 className="text-4xl font-bold mb-12">{t.realtime}</h2>
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <img 
@@ -270,24 +276,24 @@ export default function Home() {
             </div>
             <div>
               <p className="text-lg text-foreground/80 mb-6 leading-relaxed">
-                Monitor every aspect of your farm from your smartphone or desktop. Get actionable insights delivered instantly.
+                {t.realtimeDesc}
               </p>
               <ul className="space-y-3">
                 <li className="flex items-center gap-3">
                   <div className="w-2 h-2 bg-accent rounded-full"></div>
-                  <span>Soil moisture & temperature tracking</span>
+                  <span>{t.soilTracking}</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <div className="w-2 h-2 bg-accent rounded-full"></div>
-                  <span>Crop health monitoring via satellite imagery</span>
+                  <span>{t.cropHealth}</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <div className="w-2 h-2 bg-accent rounded-full"></div>
-                  <span>Predictive disease alerts</span>
+                  <span>{t.diseaseAlerts}</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <div className="w-2 h-2 bg-accent rounded-full"></div>
-                  <span>Automated irrigation scheduling</span>
+                  <span>{t.irrigationScheduling}</span>
                 </li>
               </ul>
             </div>
@@ -301,9 +307,9 @@ export default function Home() {
       {/* Technology Stack Section */}
       <section className="py-20 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-6 text-center">Powered by Innovation</h2>
+          <h2 className="text-4xl font-bold mb-6 text-center">{t.poweredBy}</h2>
           <p className="text-center text-primary-foreground/90 max-w-2xl mx-auto mb-12">
-            Verda AI integrates cutting-edge technologies to deliver unmatched agricultural insights.
+            {t.poweredByDesc}
           </p>
         </div>
       </section>
@@ -314,9 +320,9 @@ export default function Home() {
       {/* CTA Section */}
       <section className="py-20">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-6">Ready to Transform Your Farm?</h2>
+          <h2 className="text-4xl font-bold mb-6">{t.ready}</h2>
           <p className="text-lg text-foreground/80 mb-8 max-w-2xl mx-auto">
-            Join the agricultural revolution. Start your free trial today and see how Verda AI can increase your yields while conserving resources.
+            {t.readyDesc}
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
             <Button 
@@ -324,14 +330,14 @@ export default function Home() {
               className="bg-primary hover:bg-primary/90"
               onClick={() => setShowContactForm(true)}
             >
-              Start Free Trial
+              {t.startFreeTrial}
             </Button>
             <Button 
               size="lg" 
               variant="outline"
               onClick={() => setShowContactForm(true)}
             >
-              Schedule Demo
+              {t.scheduleDemo}
             </Button>
           </div>
         </div>
@@ -345,39 +351,39 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
-              <h4 className="font-bold mb-4">Product</h4>
+              <h4 className="font-bold mb-4">{t.product}</h4>
               <ul className="space-y-2 text-primary-foreground/80">
-                <li><a href="#features" className="hover:text-primary-foreground transition">Features</a></li>
-                <li><a href="#technology" className="hover:text-primary-foreground transition">Technology</a></li>
-                <li><a href="#impact" className="hover:text-primary-foreground transition">Impact</a></li>
+                <li><a href="#features" className="hover:text-primary-foreground transition">{t.features}</a></li>
+                <li><a href="#technology" className="hover:text-primary-foreground transition">{t.technology}</a></li>
+                <li><a href="#impact" className="hover:text-primary-foreground transition">{t.impact}</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-bold mb-4">Company</h4>
+              <h4 className="font-bold mb-4">{t.company}</h4>
               <ul className="space-y-2 text-primary-foreground/80">
-                <li><a href="#" className="hover:text-primary-foreground transition">About</a></li>
-                <li><a href="#" className="hover:text-primary-foreground transition">Blog</a></li>
-                <li><a href="#" className="hover:text-primary-foreground transition">Contact</a></li>
+                <li><a href="#" className="hover:text-primary-foreground transition">{t.about}</a></li>
+                <li><a href="#" className="hover:text-primary-foreground transition">{t.blog}</a></li>
+                <li><a href="#" className="hover:text-primary-foreground transition">{t.contact}</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-bold mb-4">Legal</h4>
+              <h4 className="font-bold mb-4">{t.legal}</h4>
               <ul className="space-y-2 text-primary-foreground/80">
-                <li><a href="#" className="hover:text-primary-foreground transition">Privacy</a></li>
-                <li><a href="#" className="hover:text-primary-foreground transition">Terms</a></li>
+                <li><a href="#" className="hover:text-primary-foreground transition">{t.privacy}</a></li>
+                <li><a href="#" className="hover:text-primary-foreground transition">{t.terms}</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-bold mb-4">Follow</h4>
+              <h4 className="font-bold mb-4">{t.follow}</h4>
               <ul className="space-y-2 text-primary-foreground/80">
-                <li><a href="#" className="hover:text-primary-foreground transition">Twitter</a></li>
-                <li><a href="#" className="hover:text-primary-foreground transition">LinkedIn</a></li>
-                <li><a href="#" className="hover:text-primary-foreground transition">GitHub</a></li>
+                <li><a href="#" className="hover:text-primary-foreground transition">{t.twitter}</a></li>
+                <li><a href="#" className="hover:text-primary-foreground transition">{t.linkedin}</a></li>
+                <li><a href="#" className="hover:text-primary-foreground transition">{t.github}</a></li>
               </ul>
             </div>
           </div>
           <div className="border-t border-primary-foreground/20 pt-8 text-center text-primary-foreground/80">
-            <p>&copy; 2026 Verda AI. All rights reserved.</p>
+            <p>{t.copyright}</p>
           </div>
         </div>
       </footer>
@@ -387,7 +393,7 @@ export default function Home() {
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-lg shadow-xl max-w-md w-full">
             <div className="flex items-center justify-between p-6 border-b">
-              <h3 className="text-xl font-bold">Get Started with Verda AI</h3>
+              <h3 className="text-xl font-bold">{t.getStartedModal}</h3>
               <button
                 onClick={() => setShowContactForm(false)}
                 className="text-gray-500 hover:text-gray-700"
@@ -399,13 +405,13 @@ export default function Home() {
             {submitted ? (
               <div className="p-6 text-center">
                 <div className="text-4xl mb-4">✓</div>
-                <h4 className="text-xl font-bold mb-2">Thank You!</h4>
-                <p className="text-gray-600">We'll be in touch soon.</p>
+                <h4 className="text-xl font-bold mb-2">{t.thankYou}</h4>
+                <p className="text-gray-600">{t.touchSoon}</p>
               </div>
             ) : (
               <form onSubmit={handleFormSubmit} className="p-6 space-y-4">
                 <div>
-                  <label className="block text-sm font-medium mb-1">Name *</label>
+                  <label className="block text-sm font-medium mb-1">{t.name} *</label>
                   <input
                     type="text"
                     name="name"
@@ -416,7 +422,7 @@ export default function Home() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-1">Email *</label>
+                  <label className="block text-sm font-medium mb-1">{t.email} *</label>
                   <input
                     type="email"
                     name="email"
@@ -427,7 +433,7 @@ export default function Home() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-1">Phone</label>
+                  <label className="block text-sm font-medium mb-1">{t.phone}</label>
                   <input
                     type="tel"
                     name="phone"
@@ -437,7 +443,7 @@ export default function Home() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-1">Message</label>
+                  <label className="block text-sm font-medium mb-1">{t.message}</label>
                   <textarea
                     name="message"
                     value={formData.message}
@@ -447,7 +453,7 @@ export default function Home() {
                   ></textarea>
                 </div>
                 <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
-                  Submit
+                  {t.submit}
                 </Button>
               </form>
             )}
