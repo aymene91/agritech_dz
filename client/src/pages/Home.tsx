@@ -151,7 +151,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <img 
-                src="https://cdn.example.com/iot-sensor.png" 
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310419663030816121/cskiKSwKZ7a4oDETY7KpWS/agriloop_iot_sensor_device_0b614427.png" 
                 alt="IoT Sensor Device" 
                 className="rounded-lg shadow-lg w-full"
               />
@@ -193,7 +193,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <img 
-                src="https://cdn.example.com/drone-watering.png" 
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310419663030816121/cskiKSwKZ7a4oDETY7KpWS/agriloop_drone_watering_crops_d85d4eb6.png" 
                 alt="Drone Watering Crops" 
                 className="rounded-lg shadow-lg w-full"
               />
@@ -263,7 +263,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <img 
-                src="https://cdn.example.com/dashboard.png" 
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310419663030816121/cskiKSwKZ7a4oDETY7KpWS/agritech_iot_sensors_348183ae.png" 
                 alt="Analytics Dashboard" 
                 className="rounded-lg shadow-lg w-full"
               />
