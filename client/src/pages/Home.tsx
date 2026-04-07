@@ -16,7 +16,12 @@ export default function Home() {
   const t = translations[language];
   const [isScrolled, setIsScrolled] = useState(false);
   const [showContactForm, setShowContactForm] = useState(false);
-  const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
   const [submitted, setSubmitted] = useState(false);
   const isRTL = language === "ar";
 
@@ -24,15 +29,17 @@ export default function Home() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    
+
     window.addEventListener("scroll", handleScroll);
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleFormChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleFormSubmit = (e: React.FormEvent) => {
@@ -47,7 +54,10 @@ export default function Home() {
   };
 
   return (
-    <div className={`min-h-screen bg-background text-foreground ${isRTL ? "rtl" : "ltr"}`} dir={isRTL ? "rtl" : "ltr"}>
+    <div
+      className={`min-h-screen bg-background text-foreground ${isRTL ? "rtl" : "ltr"}`}
+      dir={isRTL ? "rtl" : "ltr"}
+    >
       {/* Navigation */}
       <nav
         className={`fixed top-0 w-full z-50 transition-all duration-300 ${
@@ -56,24 +66,36 @@ export default function Home() {
       >
         <div className="container flex items-center justify-between h-16">
           <div className="flex items-center gap-2">
-            <img 
-              src="https://d2xsxph8kpxj0f.cloudfront.net/310419663030816121/cskiKSwKZ7a4oDETY7KpWS/verda_ai_logo_2-BgMoNJUL7vYkYVei6RxVQd.webp" 
-              alt="Verda AI Logo" 
+            <img
+              src="https://d2xsxph8kpxj0f.cloudfront.net/310419663030816121/cskiKSwKZ7a4oDETY7KpWS/verda_ai_logo_2-BgMoNJUL7vYkYVei6RxVQd.webp"
+              alt="Verda AI Logo"
               className="h-10 w-auto"
             />
           </div>
           <div className="hidden md:flex items-center gap-8">
-            <a href="#features" className="text-foreground hover:text-primary transition">
+            <a
+              href="#features"
+              className="text-foreground hover:text-primary transition"
+            >
               {t.features}
             </a>
-            <a href="#technology" className="text-foreground hover:text-primary transition">
+            <a
+              href="#technology"
+              className="text-foreground hover:text-primary transition"
+            >
               {t.technology}
             </a>
-            <a href="#impact" className="text-foreground hover:text-primary transition">
+            <a
+              href="#impact"
+              className="text-foreground hover:text-primary transition"
+            >
               {t.impact}
             </a>
             <LanguageSwitcher />
-            <Button className="bg-primary hover:bg-primary/90" onClick={() => setShowContactForm(true)}>
+            <Button
+              className="bg-primary hover:bg-primary/90"
+              onClick={() => setShowContactForm(true)}
+            >
               {t.getStarted}
             </Button>
           </div>
@@ -91,15 +113,15 @@ export default function Home() {
               {t.exploreSubtitle}
             </p>
             <div className="flex gap-4 flex-wrap">
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 className="bg-accent hover:bg-accent/90"
                 onClick={() => setShowContactForm(true)}
               >
                 {t.explorePlatform} <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 variant="outline"
                 onClick={() => setShowContactForm(true)}
               >
@@ -114,35 +136,34 @@ export default function Home() {
       <div className="wave-divider"></div>
 
       {/* Features Section */}
-      <section id="features" className="py-20 bg-primary text-primary-foreground">
+      <section
+        id="features"
+        className="py-20 bg-primary text-primary-foreground"
+      >
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-12 text-center">{t.whyVerdaAI}</h2>
+          <h2 className="text-4xl font-bold mb-12 text-center">
+            {t.whyVerdaAI}
+          </h2>
           <div className="grid md:grid-cols-3 gap-8">
             {/* Feature 1 */}
             <div className="bg-white/10 p-8 rounded-lg backdrop-blur-sm hover:bg-white/20 transition">
               <Droplets className="w-12 h-12 mb-4 text-accent" />
               <h3 className="text-2xl font-bold mb-3">{t.smartWater}</h3>
-              <p className="text-primary-foreground/90">
-                {t.smartWaterDesc}
-              </p>
+              <p className="text-primary-foreground/90">{t.smartWaterDesc}</p>
             </div>
 
             {/* Feature 2 */}
             <div className="bg-white/10 p-8 rounded-lg backdrop-blur-sm hover:bg-white/20 transition">
               <BarChart3 className="w-12 h-12 mb-4 text-accent" />
               <h3 className="text-2xl font-bold mb-3">{t.aiPowered}</h3>
-              <p className="text-primary-foreground/90">
-                {t.aiPoweredDesc}
-              </p>
+              <p className="text-primary-foreground/90">{t.aiPoweredDesc}</p>
             </div>
 
             {/* Feature 3 */}
             <div className="bg-white/10 p-8 rounded-lg backdrop-blur-sm hover:bg-white/20 transition">
               <Zap className="w-12 h-12 mb-4 text-accent" />
               <h3 className="text-2xl font-bold mb-3">{t.automated}</h3>
-              <p className="text-primary-foreground/90">
-                {t.automatedDesc}
-              </p>
+              <p className="text-primary-foreground/90">{t.automatedDesc}</p>
             </div>
           </div>
         </div>
@@ -157,9 +178,9 @@ export default function Home() {
           <h2 className="text-4xl font-bold mb-12">{t.builtOnModern}</h2>
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <img 
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310419663030816121/cskiKSwKZ7a4oDETY7KpWS/agriloop_iot_sensor_device_0b614427.png" 
-                alt="IoT Sensor Device" 
+              <img
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310419663030816121/cskiKSwKZ7a4oDETY7KpWS/agriloop_iot_sensor_device_0b614427.png"
+                alt="IoT Sensor Device"
                 className="rounded-lg shadow-lg w-full"
               />
             </div>
@@ -199,9 +220,9 @@ export default function Home() {
           <h2 className="text-4xl font-bold mb-12">{t.seamless}</h2>
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <img 
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310419663030816121/cskiKSwKZ7a4oDETY7KpWS/agriloop_drone_watering_crops_d85d4eb6.png" 
-                alt="Drone Watering Crops" 
+              <img
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310419663030816121/cskiKSwKZ7a4oDETY7KpWS/agriloop_drone_watering_crops_d85d4eb6.png"
+                alt="Drone Watering Crops"
                 className="rounded-lg shadow-lg w-full"
               />
             </div>
@@ -238,7 +259,9 @@ export default function Home() {
       {/* Impact Section */}
       <section id="impact" className="py-20 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-12 text-center">{t.transforming}</h2>
+          <h2 className="text-4xl font-bold mb-12 text-center">
+            {t.transforming}
+          </h2>
           <div className="grid md:grid-cols-4 gap-8 text-center">
             <div>
               <div className="text-5xl font-bold mb-2">+40%</div>
@@ -269,9 +292,9 @@ export default function Home() {
           <h2 className="text-4xl font-bold mb-12">{t.realtime}</h2>
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <img 
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310419663030816121/cskiKSwKZ7a4oDETY7KpWS/agritech_iot_sensors_348183ae.png" 
-                alt="Analytics Dashboard" 
+              <img
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310419663030816121/cskiKSwKZ7a4oDETY7KpWS/agritech_iot_sensors_348183ae.png"
+                alt="Analytics Dashboard"
                 className="rounded-lg shadow-lg w-full"
               />
             </div>
@@ -326,15 +349,15 @@ export default function Home() {
             {t.readyDesc}
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               className="bg-primary hover:bg-primary/90"
               onClick={() => setShowContactForm(true)}
             >
               {t.startFreeTrial}
             </Button>
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               variant="outline"
               onClick={() => setShowContactForm(true)}
             >
@@ -354,32 +377,109 @@ export default function Home() {
             <div>
               <h4 className="font-bold mb-4">{t.product}</h4>
               <ul className="space-y-2 text-primary-foreground/80">
-                <li><a href="#features" className="hover:text-primary-foreground transition">{t.features}</a></li>
-                <li><a href="#technology" className="hover:text-primary-foreground transition">{t.technology}</a></li>
-                <li><a href="#impact" className="hover:text-primary-foreground transition">{t.impact}</a></li>
+                <li>
+                  <a
+                    href="#features"
+                    className="hover:text-primary-foreground transition"
+                  >
+                    {t.features}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#technology"
+                    className="hover:text-primary-foreground transition"
+                  >
+                    {t.technology}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#impact"
+                    className="hover:text-primary-foreground transition"
+                  >
+                    {t.impact}
+                  </a>
+                </li>
               </ul>
             </div>
             <div>
               <h4 className="font-bold mb-4">{t.company}</h4>
               <ul className="space-y-2 text-primary-foreground/80">
-                <li><a href="#" className="hover:text-primary-foreground transition">{t.about}</a></li>
-                <li><a href="#" className="hover:text-primary-foreground transition">{t.blog}</a></li>
-                <li><a href="#" className="hover:text-primary-foreground transition">{t.contact}</a></li>
+                <li>
+                  <a
+                    href="#"
+                    className="hover:text-primary-foreground transition"
+                  >
+                    {t.about}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="hover:text-primary-foreground transition"
+                  >
+                    {t.blog}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="hover:text-primary-foreground transition"
+                  >
+                    {t.contact}
+                  </a>
+                </li>
               </ul>
             </div>
             <div>
               <h4 className="font-bold mb-4">{t.legal}</h4>
               <ul className="space-y-2 text-primary-foreground/80">
-                <li><a href="#" className="hover:text-primary-foreground transition">{t.privacy}</a></li>
-                <li><a href="#" className="hover:text-primary-foreground transition">{t.terms}</a></li>
+                <li>
+                  <a
+                    href="#"
+                    className="hover:text-primary-foreground transition"
+                  >
+                    {t.privacy}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="hover:text-primary-foreground transition"
+                  >
+                    {t.terms}
+                  </a>
+                </li>
               </ul>
             </div>
             <div>
               <h4 className="font-bold mb-4">{t.follow}</h4>
               <ul className="space-y-2 text-primary-foreground/80">
-                <li><a href="#" className="hover:text-primary-foreground transition">{t.twitter}</a></li>
-                <li><a href="#" className="hover:text-primary-foreground transition">{t.linkedin}</a></li>
-                <li><a href="#" className="hover:text-primary-foreground transition">{t.github}</a></li>
+                <li>
+                  <a
+                    href="#"
+                    className="hover:text-primary-foreground transition"
+                  >
+                    {t.twitter}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="hover:text-primary-foreground transition"
+                  >
+                    {t.linkedin}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="hover:text-primary-foreground transition"
+                  >
+                    {t.github}
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
@@ -412,7 +512,9 @@ export default function Home() {
             ) : (
               <form onSubmit={handleFormSubmit} className="p-6 space-y-4">
                 <div>
-                  <label className="block text-sm font-medium mb-1">{t.name} *</label>
+                  <label className="block text-sm font-medium mb-1">
+                    {t.name} *
+                  </label>
                   <input
                     type="text"
                     name="name"
@@ -423,7 +525,9 @@ export default function Home() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-1">{t.email} *</label>
+                  <label className="block text-sm font-medium mb-1">
+                    {t.email} *
+                  </label>
                   <input
                     type="email"
                     name="email"
@@ -434,7 +538,9 @@ export default function Home() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-1">{t.phone}</label>
+                  <label className="block text-sm font-medium mb-1">
+                    {t.phone}
+                  </label>
                   <input
                     type="tel"
                     name="phone"
@@ -444,7 +550,9 @@ export default function Home() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-1">{t.message}</label>
+                  <label className="block text-sm font-medium mb-1">
+                    {t.message}
+                  </label>
                   <textarea
                     name="message"
                     value={formData.message}
@@ -453,7 +561,10 @@ export default function Home() {
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                   ></textarea>
                 </div>
-                <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
+                <Button
+                  type="submit"
+                  className="w-full bg-primary hover:bg-primary/90"
+                >
                   {t.submit}
                 </Button>
               </form>
