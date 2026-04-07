@@ -31,7 +31,10 @@ export default function Drone3D({ dronePosition, showDrone }: Drone3DProps) {
 
     // Renderer setup
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setSize(containerRef.current.clientWidth, containerRef.current.clientHeight);
+    renderer.setSize(
+      containerRef.current.clientWidth,
+      containerRef.current.clientHeight
+    );
     renderer.setPixelRatio(window.devicePixelRatio);
     containerRef.current.appendChild(renderer.domElement);
     rendererRef.current = renderer;
@@ -68,7 +71,7 @@ export default function Drone3D({ dronePosition, showDrone }: Drone3DProps) {
       [0, 0, -1],
     ];
 
-    armPositions.forEach((pos) => {
+    armPositions.forEach(pos => {
       const arm = new THREE.Mesh(armGeometry, armMaterial);
       arm.position.set(pos[0], pos[1], pos[2]);
       arm.rotation.z = Math.PI / 2;
@@ -88,7 +91,7 @@ export default function Drone3D({ dronePosition, showDrone }: Drone3DProps) {
     ];
 
     const propellers: THREE.Mesh[] = [];
-    propellerPositions.forEach((pos) => {
+    propellerPositions.forEach(pos => {
       const propeller = new THREE.Mesh(propellerGeometry, propellerMaterial);
       propeller.position.set(pos[0], pos[1], pos[2]);
       propeller.rotation.x = Math.PI / 2;
@@ -107,7 +110,10 @@ export default function Drone3D({ dronePosition, showDrone }: Drone3DProps) {
       positions[i + 2] = (Math.random() - 0.5) * 0.5; // z
     }
 
-    particleGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+    particleGeometry.setAttribute(
+      "position",
+      new THREE.BufferAttribute(positions, 3)
+    );
     const particleMaterial = new THREE.PointsMaterial({
       color: 0x87ceeb, // Sky blue
       size: 0.1,
@@ -122,7 +128,7 @@ export default function Drone3D({ dronePosition, showDrone }: Drone3DProps) {
       requestAnimationFrame(animate);
 
       // Rotate propellers
-      propellers.forEach((propeller) => {
+      propellers.forEach(propeller => {
         propeller.rotation.x += 0.3;
       });
 
@@ -152,7 +158,10 @@ export default function Drone3D({ dronePosition, showDrone }: Drone3DProps) {
     // Cleanup
     return () => {
       window.removeEventListener("resize", handleResize);
-      if (containerRef.current && renderer.domElement.parentNode === containerRef.current) {
+      if (
+        containerRef.current &&
+        renderer.domElement.parentNode === containerRef.current
+      ) {
         containerRef.current.removeChild(renderer.domElement);
       }
       renderer.dispose();

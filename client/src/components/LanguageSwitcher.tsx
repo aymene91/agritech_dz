@@ -25,7 +25,7 @@ export default function LanguageSwitcher() {
 
       {isOpen && (
         <div className="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
-          {languages.map((lang) => (
+          {languages.map(lang => (
             <button
               key={lang.code}
               onClick={() => {
@@ -33,7 +33,9 @@ export default function LanguageSwitcher() {
                 setIsOpen(false);
               }}
               className={`w-full text-left px-4 py-2 hover:bg-gray-100 transition ${
-                language === lang.code ? "bg-primary text-primary-foreground font-bold" : "text-foreground"
+                language === lang.code
+                  ? "bg-primary text-primary-foreground font-bold"
+                  : "text-foreground"
               }`}
             >
               {lang.label}
