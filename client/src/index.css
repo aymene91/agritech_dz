@@ -45,39 +45,39 @@
 :root {
   /* AgriTech-DZ: Organic Tech Design System */
   /* Forest Green (#2D5016), Terracotta (#C85A3A), Lime Green (#9ACD32) */
-  --primary: #2D5016;
-  --primary-foreground: #F5F1E8;
-  --sidebar-primary: #2D5016;
-  --sidebar-primary-foreground: #F5F1E8;
-  --chart-1: #9ACD32;
-  --chart-2: #7BA428;
-  --chart-3: #2D5016;
-  --chart-4: #1A2F0B;
-  --chart-5: #C85A3A;
+  --primary: #2d5016;
+  --primary-foreground: #f5f1e8;
+  --sidebar-primary: #2d5016;
+  --sidebar-primary-foreground: #f5f1e8;
+  --chart-1: #9acd32;
+  --chart-2: #7ba428;
+  --chart-3: #2d5016;
+  --chart-4: #1a2f0b;
+  --chart-5: #c85a3a;
   --radius: 0.65rem;
-  --background: #F5F1E8;
-  --foreground: #1A1A1A;
-  --card: #FFFFFF;
-  --card-foreground: #1A1A1A;
-  --popover: #FFFFFF;
-  --popover-foreground: #1A1A1A;
-  --secondary: #C85A3A;
-  --secondary-foreground: #FFFFFF;
-  --muted: #E8D5C4;
-  --muted-foreground: #6B5344;
-  --accent: #9ACD32;
-  --accent-foreground: #1A2F0B;
-  --destructive: #DC2626;
-  --destructive-foreground: #FFFFFF;
-  --border: #E0D5C8;
-  --input: #FFFFFF;
-  --ring: #2D5016;
-  --sidebar: #FFFFFF;
-  --sidebar-foreground: #1A1A1A;
-  --sidebar-accent: #9ACD32;
-  --sidebar-accent-foreground: #1A2F0B;
-  --sidebar-border: #E0D5C8;
-  --sidebar-ring: #2D5016;
+  --background: #f5f1e8;
+  --foreground: #1a1a1a;
+  --card: #ffffff;
+  --card-foreground: #1a1a1a;
+  --popover: #ffffff;
+  --popover-foreground: #1a1a1a;
+  --secondary: #c85a3a;
+  --secondary-foreground: #ffffff;
+  --muted: #e8d5c4;
+  --muted-foreground: #6b5344;
+  --accent: #9acd32;
+  --accent-foreground: #1a2f0b;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #e0d5c8;
+  --input: #ffffff;
+  --ring: #2d5016;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #1a1a1a;
+  --sidebar-accent: #9acd32;
+  --sidebar-accent-foreground: #1a2f0b;
+  --sidebar-border: #e0d5c8;
+  --sidebar-ring: #2d5016;
 }
 
 .dark {
@@ -96,7 +96,7 @@
   --muted: oklch(0.274 0.006 286.033);
   --muted-foreground: oklch(0.705 0.015 286.067);
   --accent: oklch(0.274 0.006 286.033);
-  --accent-foreground:  oklch(0.92 0.005 65);
+  --accent-foreground: oklch(0.92 0.005 65);
   --destructive: oklch(0.704 0.191 22.216);
   --destructive-foreground: oklch(0.985 0 0);
   --border: oklch(1 0 0 / 10%);
@@ -110,7 +110,7 @@
   --sidebar: oklch(0.21 0.006 285.885);
   --sidebar-foreground: oklch(0.85 0.005 65);
   --sidebar-accent: oklch(0.274 0.006 286.033);
-  --sidebar-accent-foreground:  oklch(0.985 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.488 0.243 264.376);
 }
@@ -179,8 +179,13 @@
 }
 /* AgriTech-DZ: Organic Tech Typography & Design System */
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Playfair Display', serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Playfair Display", serif;
   font-weight: 700;
   letter-spacing: -0.02em;
 }
@@ -201,12 +206,13 @@ h3 {
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 400;
 }
 
-.quote, blockquote {
-  font-family: 'Merriweather', serif;
+.quote,
+blockquote {
+  font-family: "Merriweather", serif;
   font-style: italic;
   color: var(--muted-foreground);
 }
@@ -216,7 +222,61 @@ body {
   position: relative;
   height: 80px;
   background: var(--primary);
-  clip-path: polygon(0 30%, 2% 28%, 4% 32%, 6% 28%, 8% 32%, 10% 30%, 12% 34%, 14% 30%, 16% 34%, 18% 30%, 20% 34%, 22% 30%, 24% 34%, 26% 30%, 28% 34%, 30% 30%, 32% 34%, 34% 30%, 36% 34%, 38% 30%, 40% 34%, 42% 30%, 44% 34%, 46% 30%, 48% 34%, 50% 30%, 52% 34%, 54% 30%, 56% 34%, 58% 30%, 60% 34%, 62% 30%, 64% 34%, 66% 30%, 68% 34%, 70% 30%, 72% 34%, 74% 30%, 76% 34%, 78% 30%, 80% 32%, 82% 28%, 84% 32%, 86% 28%, 88% 32%, 90% 30%, 92% 32%, 94% 28%, 96% 32%, 98% 28%, 100% 30%, 100% 100%, 0 100%);
+  clip-path: polygon(
+    0 30%,
+    2% 28%,
+    4% 32%,
+    6% 28%,
+    8% 32%,
+    10% 30%,
+    12% 34%,
+    14% 30%,
+    16% 34%,
+    18% 30%,
+    20% 34%,
+    22% 30%,
+    24% 34%,
+    26% 30%,
+    28% 34%,
+    30% 30%,
+    32% 34%,
+    34% 30%,
+    36% 34%,
+    38% 30%,
+    40% 34%,
+    42% 30%,
+    44% 34%,
+    46% 30%,
+    48% 34%,
+    50% 30%,
+    52% 34%,
+    54% 30%,
+    56% 34%,
+    58% 30%,
+    60% 34%,
+    62% 30%,
+    64% 34%,
+    66% 30%,
+    68% 34%,
+    70% 30%,
+    72% 34%,
+    74% 30%,
+    76% 34%,
+    78% 30%,
+    80% 32%,
+    82% 28%,
+    84% 32%,
+    86% 28%,
+    88% 32%,
+    90% 30%,
+    92% 32%,
+    94% 28%,
+    96% 32%,
+    98% 28%,
+    100% 30%,
+    100% 100%,
+    0 100%
+  );
 }
 
 /* Smooth transitions */
@@ -233,7 +293,8 @@ body {
 }
 
 @keyframes blob-animation {
-  0%, 100% {
+  0%,
+  100% {
     border-radius: 45% 55% 50% 50% / 50% 50% 55% 45%;
   }
   25% {
@@ -248,18 +309,22 @@ body {
 }
 
 /* Hover effects for organic feel */
-button, [role="button"], a {
+button,
+[role="button"],
+a {
   position: relative;
 }
 
-button:hover, [role="button"]:hover, a:hover {
+button:hover,
+[role="button"]:hover,
+a:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 16px rgba(45, 80, 22, 0.15);
 }
 
 /* Gradient text for headings */
 .gradient-text {
-  background: linear-gradient(135deg, #2D5016 0%, #9ACD32 100%);
+  background: linear-gradient(135deg, #2d5016 0%, #9acd32 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -267,7 +332,8 @@ button:hover, [role="button"]:hover, a:hover {
 
 /* Floating animation */
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px);
   }
   50% {
