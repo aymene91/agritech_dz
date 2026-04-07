@@ -1,1 +1,6 @@
-{\n  "buildCommand": "pnpm build",\n  "installCommand": "pnpm install",\n  "outputDirectory": "dist/public",\n  "framework": "vite",\n  "env": {\n    "NODE_ENV": "production"\n  },\n  "functions": {\n    "server/index.ts": {\n      "runtime": "nodejs20.x",\n      "memory": 1024\n    }\n  }\n}
+{
+  "buildCommand": "pnpm build",
+  "installCommand": "pnpm install",
+  "outputDirectory": "dist/public",
+  "framework": "vite"
+}
